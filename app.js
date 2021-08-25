@@ -17,13 +17,26 @@ function updateCaseNumber(incrising){
 //case plus item button//
 document.getElementById('case-plus').addEventListener('click',function(){
     updateCaseNumber(true)
+    calculateTotal();
 });
 
 document.getElementById('case-minus').addEventListener('click',function(){
     updateCaseNumber(false)
-    
+    calculateTotal();
 });
+function getInputValue(product){
+    const productNumber = document.getElementById(product + '-number');
+    const productInput = parseInt(productNumber.value);
+    return productInput;
+}
 
+function calculateTotal() {
+
+    const iphoneTotal = getInputValue('phone') * 1219;
+    const caseTotal = getInputValue('case') * 59;
+    const subTotal = iphoneTotal + caseTotal;
+    console.log(subTotal);
+}
 
 // iphone section//
 function updateIphoneNumber(isIncrise){
@@ -45,10 +58,12 @@ function updateIphoneNumber(isIncrise){
 //iphone pluse Button
 document.getElementById('iphone-plus').addEventListener('click', function(){
     updateIphoneNumber(true);
+    calculateTotal();
     
 });
 
 //iphone minus button
 document.getElementById('iphone-minus').addEventListener('click', function(){
     updateIphoneNumber(false);
+    calculateTotal();
 });
